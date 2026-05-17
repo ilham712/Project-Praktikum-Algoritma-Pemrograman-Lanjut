@@ -21,7 +21,76 @@ int jumlahFilm = 0;
 
 char kursi[10][10];
 
-// ===== FUNCTION =====
+// ===== INISIALISASI FUNCTION =====
+void menu();
+void jumlahKursi();
+void tampilKursi();
+void katalogFilm();
+void tampilFilm();
+void bookingTiket();
+void sortingKode();
+void cariFilm();
+void sortingFilm();
+void riwayatFilm();
+void simpanFile();
+void sortingJudul();
+void sortingRating();
+
+// ===== MAIN =====
+int main() {
+	jumlahKursi();
+	
+	katalogFilm();
+	
+	menu();
+	
+	return 0;
+}
+
+// ===== MENU UTAMA =====
+void menu() {
+	int pilih;
+	
+	cout << "\n===== BIOSKOP XXI =====\n";
+	cout << "1. Lihat Film\n";
+	cout << "2. Booking Tiket Film\n";
+	cout << "3. Cari Film\n";
+	cout << "4. Sorting Film\n";
+	cout << "5. Riwayat Tiket Film\n";
+	cout << "6. Keluar\n";
+	
+	cout << "Pilih Menu : ";
+	cin >> pilih;
+	
+	switch(pilih) {
+		case 1: 
+			system("cls");
+			tampilFilm();
+			break;
+		case 2: 
+			bookingTiket();
+			break;
+		case 3: 
+			system("cls");
+			cariFilm();
+			break;
+		case 4: 
+			sortingFilm();
+			break;
+		case 5: 
+			riwayatFilm();
+			break;
+		case 6: 
+			simpanFile();
+			cout << "Program selesai!\n";
+            return;
+		default: 
+			system("cls");
+			cout << "Menu tidak valid!\n";
+	}
+	
+	menu(); // --> REKURSI
+}
 
 // Inisialisasi awal kursi bioskop
 void jumlahKursi() {
@@ -125,8 +194,34 @@ void bookingTiket() {
     kursi[baris][kolom] = 'X';
 }
 
-//Menu untuk Mencari Film
+//Sorting accending berdasarkan kode untuk syarat binary search di menu cari berdasarkan kode film
+void sortingKode() {
+	//Selection Sort
+    for(int i = 0; i < jumlahFilm - 1; i++) {
+
+        int minIndex = i;
+
+        for(int j = i + 1; j < jumlahFilm; j++) {
+
+            if(daftarFilm[j].kode <
+               daftarFilm[minIndex].kode) {
+
+                minIndex = j;
+            }
+        }
+
+        Film temp;
+
+        temp = daftarFilm[i];
+        daftarFilm[i] = daftarFilm[minIndex];
+        daftarFilm[minIndex] = temp;
+    }
+}
+
+//Menu untuk Mencari Film (Searching)
 void cariFilm() {
+	sortingKode();
+	
 	int opsiCari;
 	int cariKode;
 	string keyword;
@@ -134,13 +229,14 @@ void cariFilm() {
 	char again;
 	
 	cout << "\n===== Menu Cari Film =====\n";
-	cout << "1. Cari Berdasarkan Judul\n";
+	cout << "1. Cari Berdasarkan Judul Film\n";
 	cout << "2. Cari Berdasarkan Kode Film\n";
 	cout << "Pilih Menu : ";
 	cin >> opsiCari;
 	
 	switch(opsiCari) {
 		case 1: 
+			// Sequential Search Non-Sentinel
 			ditemukan = false;
 			cout << "\nMasukkan judul film: ";
 			cin.ignore();
@@ -171,7 +267,7 @@ void cariFilm() {
 			}
 
 			if(!ditemukan) {
-				cout << "Film tidak ditemukan!\n";
+				cout << "\nFilm tidak ditemukan!\n";
 			}
 			
 			cout << "\nCari lagi? (y/n):"; 
@@ -182,9 +278,76 @@ void cariFilm() {
 				cariFilm();
 			} else if(again == 'n'|| again == 'N'){
 				system("cls");
+			} else {
+				system("cls");
 			}
 			break;
 		case 2: {
+			cout << "\nMasukkan kode film : ";
+			cin >> cariKode;
+
+			int awal = 0;
+			int akhir = jumlahFilm - 1;
+			bool ditemukan = false;
+
+			while(awal <= akhir && !ditemukan) {
+
+				int tengah = (awal + akhir) / 2;
+
+				if(daftarFilm[tengah].kode == cariKode) {
+
+					cout << "\nFilm ditemukan!\n\n";
+
+					cout << left
+						 << setw(15) << "Judul"
+						 << setw(10) << "Kode"
+						 << setw(12) << "Genre"
+						 << setw(10) << "Durasi"
+						 << setw(10) << "Rating" << endl;
+
+					cout << "-----------------------------------------------------\n";
+
+					cout << left
+						 << setw(15) << daftarFilm[tengah].judul
+						 << setw(10) << daftarFilm[tengah].kode
+						 << setw(12) << daftarFilm[tengah].genre
+						 << setw(10) << daftarFilm[tengah].durasi
+						 << setw(10) << daftarFilm[tengah].rating
+						 << endl;
+
+					ditemukan = true;
+				}
+
+				else if(cariKode < daftarFilm[tengah].kode) {
+
+					akhir = tengah - 1;
+				}
+
+				else {
+
+					awal = tengah + 1;
+				}
+			}
+
+			if(!ditemukan) {
+				cout << "/nFilm tidak ditemukan!\n";
+			}
+			
+			cout << "\nCari lagi? (y/n):"; 
+			cin >> again;
+			
+			if(again == 'y' || again == 'Y') {
+				system("cls");
+				cariFilm();
+			} else if(again == 'n'|| again == 'N'){
+				system("cls");
+			} else {
+				system("cls");
+			}
+			break;
+		}
+			
+		/*case 2: {
 			// Sequential Search Non-Sentinel
 			cout << "\nMasukkan kode film: ";
 			cin >> cariKode;
@@ -227,7 +390,7 @@ void cariFilm() {
 				system("cls");
 			}
 			break;
-		}
+		} */
 		default:
 			system("cls");
 			cout << "Menu tidak valid!\n";
@@ -236,64 +399,157 @@ void cariFilm() {
 	
 }
 
-void shortingFilm() {}
-void riwayatFilm() {}
-void simpanFile() {}
-
-
-
-// ===== MENU UTAMA =====
-void menu() {
-	int pilih;
+void sortingFilm() {
+	int opsiCari;
 	
-	cout << "\n===== BIOSKOP XXI =====\n";
-	cout << "1. Lihat Film\n";
-	cout << "2. Booking Tiket Film\n";
-	cout << "3. Cari Film\n";
-	cout << "4. Sorting Film\n";
-	cout << "5. Riwayat Tiket Film\n";
-	cout << "6. Keluar\n";
-	
+	cout << "\n===== Menu Sorting Film =====\n";
+	cout << "1. Sorting Berdasarkan Judul Film\n";
+	cout << "2. Sorting Berdasarkan Rating Film\n";
 	cout << "Pilih Menu : ";
-	cin >> pilih;
+	cin >> opsiCari;
 	
-	switch(pilih) {
-		case 1: 
-			system("cls");
-			tampilFilm();
-			break;
-		case 2: 
-			bookingTiket();
-			break;
-		case 3: 
-			system("cls");
-			cariFilm();
-			break;
-		case 4: 
-			shortingFilm();
-			break;
-		case 5: 
-			riwayatFilm();
-			break;
-		case 6: 
-			simpanFile();
-			break;
-			cout << "Program selesai!\n";
-            return;
-		default: 
-			system("cls");
-			cout << "Menu tidak valid!\n";
+	if(opsiCari == 1) {
+		system("cls");
+		sortingJudul();
+	} else if(opsiCari == 2) {
+		system("cls");
+		sortingRating();
+	} else {
+		system("cls");
+		cout << "Menu tidak valid!\n";
+		sortingFilm();
 	}
-	
-	menu(); // --> REKURSI
 }
 
-int main() {
-	jumlahKursi();
-	
-	katalogFilm();
-	
-	menu();
-	
-	return 0;
+// Sorting judul menggunakan Bubble Short
+void sortingJudul() {
+
+    int pilihan;
+    char again;
+
+    cout << "\n===== SORTING JUDUL =====\n";
+    cout << "1. Ascending\n";
+    cout << "2. Descending\n";
+    cout << "Pilih : ";
+    cin >> pilihan;
+
+    for(int i = 0; i < jumlahFilm - 1; i++) {
+
+        for(int j = 0; j < jumlahFilm - i - 1; j++) {
+
+            bool kondisi = false;
+
+            // ASC
+            if(pilihan == 1) {
+
+                kondisi =
+                daftarFilm[j].judul >
+                daftarFilm[j + 1].judul;
+            }
+
+            // DESC
+            else if(pilihan == 2) {
+
+                kondisi =
+                daftarFilm[j].judul <
+                daftarFilm[j + 1].judul;
+            }
+
+            if(kondisi) {
+
+                Film temp;
+
+                temp = daftarFilm[j];
+                daftarFilm[j] = daftarFilm[j + 1];
+                daftarFilm[j + 1] = temp;
+            }
+        }
+    }
+
+    cout << "\nSorting judul berhasil!\n\n";
+    
+    tampilFilm();
+    
+    cout << "\nCari lagi? (y/n):"; 
+			cin >> again;
+			
+			if(again == 'y' || again == 'Y') {
+				system("cls");
+				sortingFilm();
+			} else if(again == 'n'|| again == 'N'){
+				system("cls");
+			} else {
+				system("cls");
+			}
 }
+
+// Sorting judul menggunakan Selection Short
+void sortingRating() {
+
+    int pilihan;
+    char again;
+
+    cout << "\n===== SORTING RATING =====\n";
+    cout << "1. Ascending\n";
+    cout << "2. Descending\n";
+    cout << "Pilih : ";
+    cin >> pilihan;
+
+    for(int i = 0; i < jumlahFilm - 1; i++) {
+
+        int index = i;
+
+        for(int j = i + 1; j < jumlahFilm; j++) {
+
+            bool kondisi = false;
+
+            // ASC
+            if(pilihan == 1) {
+
+                kondisi =
+                daftarFilm[j].rating <
+                daftarFilm[index].rating;
+            }
+
+            // DESC
+            else if(pilihan == 2) {
+
+                kondisi =
+                daftarFilm[j].rating >
+                daftarFilm[index].rating;
+            }
+
+            if(kondisi) {
+
+                index = j;
+            }
+        }
+
+        Film temp;
+
+        temp = daftarFilm[i];
+        daftarFilm[i] = daftarFilm[index];
+        daftarFilm[index] = temp;
+    }
+
+    cout << "\nSorting rating berhasil!\n\n";
+    
+    tampilFilm();
+    
+    cout << "\nCari lagi? (y/n):"; 
+			cin >> again;
+			
+			if(again == 'y' || again == 'Y') {
+				system("cls");
+				sortingFilm();
+			} else if(again == 'n'|| again == 'N'){
+				system("cls");
+			} else {
+				system("cls");
+			}
+}
+
+
+void riwayatFilm() {}
+
+void simpanFile() {}
