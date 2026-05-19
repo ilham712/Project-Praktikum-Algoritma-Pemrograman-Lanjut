@@ -54,6 +54,7 @@ void menu() {
 	cout << "\n===== BIOSKOP XXI =====\n";
 	
 	cout << "\nYukk nonton, kita butuh refreshing guysss!!\n";
+	cout << "-----------------Selamat Menonton-----------------";
 	
 	cout << "1. Lihat Film\n";
 	cout << "2. Booking Tiket Film\n";
