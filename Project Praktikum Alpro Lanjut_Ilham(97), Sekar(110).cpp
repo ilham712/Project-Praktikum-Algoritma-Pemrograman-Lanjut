@@ -128,8 +128,8 @@ void katalogFilm() {
     daftarFilm[4] = {"Pabrik Gula", 50, "Horror", 105, 9};
     daftarFilm[5] = {"Dilan 1990", 60, "Romance", 110, 7};
     daftarFilm[6] = {"Projct Hail Mary", 70, "Sci-Fi", 157, 8.6};
-    daftarFilm[7] = {"Kuncen", 70, "Horror", 180, 10};
-    daftarFilm[8] = {"Minions", 80, "Komedi", 110, 9.2};
+    daftarFilm[7] = {"Kuncen", 80, "Horror", 180, 10};
+    daftarFilm[8] = {"Minions", 90, "Komedi", 110, 9.2};
 
     jumlahFilm = 9;
 }
