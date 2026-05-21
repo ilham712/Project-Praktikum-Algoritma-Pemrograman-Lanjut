@@ -54,7 +54,7 @@ void menu() {
 	cout << "\n===== BIOSKOP XXI =====\n";
 	
 	cout << "\nYukk nonton, kita butuh refreshing guysss!!\n";
-	cout << "-----------------Selamat Menonton-----------------";
+	cout << "-----------------Selamat Menonton-----------------\n\n";
 	
 	cout << "1. Lihat Film\n";
 	cout << "2. Booking Tiket Film\n";
@@ -146,20 +146,20 @@ void tampilFilm() {
 	
 	cout << left
 		 << setw(5) << "No"
-         << setw(15) << "Judul"
+         << setw(25) << "Judul"
          << setw(10) << "Kode"
-         << setw(12) << "Genre"
+         << setw(20) << "Genre"
          << setw(10) << "Durasi"
          << setw(10) << "Rating" << endl;
          
-    cout << "-----------------------------------------------------\n";
+    cout << "----------------------------------------------------------------------------\n";
 
     for(int i = 0; i < jumlahFilm; i++) {
         cout << left
 			 << setw(5) << i + 1
-             << setw(15) << daftarFilm[i].judul
+             << setw(25) << daftarFilm[i].judul
              << setw(10) << daftarFilm[i].kode
-             << setw(12) << daftarFilm[i].genre
+             << setw(20) << daftarFilm[i].genre
              << setw(10) << daftarFilm[i].durasi
              << setw(10) << daftarFilm[i].rating
              << endl;
@@ -269,16 +269,16 @@ void cariFilm() {
 				if(daftarFilm[i].judul == keyword) {
 				cout << "\nFilm ditemukan!\n\n";
 				cout << left
-					 << setw(15) << "Judul"
+					 << setw(25) << "Judul"
 					 << setw(10) << "Kode"
-					 << setw(12) << "Genre"
+					 << setw(20) << "Genre"
 					 << setw(10) << "Durasi"
 					 << setw(10) << "Rating" << endl;
-				cout << "-----------------------------------------------------\n";
+				cout << "-----------------------------------------------------------------------\n";
 				cout << left
-					 << setw(15) << daftarFilm[i].judul
+					 << setw(25) << daftarFilm[i].judul
 					 << setw(10) << daftarFilm[i].kode
-					 << setw(12) << daftarFilm[i].genre
+					 << setw(20) << daftarFilm[i].genre
 					 << setw(10) << daftarFilm[i].durasi
 					 << setw(10) << daftarFilm[i].rating
 					 << endl;
@@ -322,18 +322,18 @@ void cariFilm() {
 					cout << "\nFilm ditemukan!\n\n";
 
 					cout << left
-						 << setw(15) << "Judul"
+						 << setw(25) << "Judul"
 						 << setw(10) << "Kode"
-						 << setw(12) << "Genre"
+						 << setw(20) << "Genre"
 						 << setw(10) << "Durasi"
 						 << setw(10) << "Rating" << endl;
 
-					cout << "-----------------------------------------------------\n";
+					cout << "-----------------------------------------------------------------------\n";
 
 					cout << left
-						 << setw(15) << daftarFilm[tengah].judul
+						 << setw(25) << daftarFilm[tengah].judul
 						 << setw(10) << daftarFilm[tengah].kode
-						 << setw(12) << daftarFilm[tengah].genre
+						 << setw(20) << daftarFilm[tengah].genre
 						 << setw(10) << daftarFilm[tengah].durasi
 						 << setw(10) << daftarFilm[tengah].rating
 						 << endl;
@@ -381,16 +381,16 @@ void cariFilm() {
 				if(daftarFilm[i].kode == cariKode) {
 					cout << "\nFilm ditemukan!\n\n";
 					cout << left
-						 << setw(15) << "Judul"
+						 << setw(25) << "Judul"
 						 << setw(10) << "Kode"
-						 << setw(12) << "Genre"
+						 << setw(20) << "Genre"
 						 << setw(10) << "Durasi"
 						 << setw(10) << "Rating" << endl;
 					cout << "-----------------------------------------------------\n";
 					cout << left
-						 << setw(15) << daftarFilm[i].judul
+						 << setw(25) << daftarFilm[i].judul
 						 << setw(10) << daftarFilm[i].kode
-						 << setw(12) << daftarFilm[i].genre
+						 << setw(20) << daftarFilm[i].genre
 						 << setw(10) << daftarFilm[i].durasi
 						 << setw(10) << daftarFilm[i].rating
 						 << endl;
