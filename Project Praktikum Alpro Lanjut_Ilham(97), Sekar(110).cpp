@@ -82,6 +82,7 @@ void menu() {
 			cariFilm();
 			break;
 		case 4: 
+			system("cls");
 			sortingFilm();
 			break;
 		case 5: 
