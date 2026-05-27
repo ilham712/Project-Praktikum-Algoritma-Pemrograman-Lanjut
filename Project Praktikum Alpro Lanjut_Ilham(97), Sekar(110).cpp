@@ -224,12 +224,12 @@ void katalogFilm() {
 	daftarFilm[0] = {"Avengers", 10, "Action", 180, 9.0, 1};
     daftarFilm[1] = {"Interstellar", 20, "Sci-Fi", 169, 9.5, 2};
     daftarFilm[2] = {"Conjuring", 30, "Horror", 120, 8.0, 3};
-    daftarFilm[3] = {"Agak Laen", 40, "Horror, Comedi", 119, 7.2, 4};
+    daftarFilm[3] = {"Agak Laen", 40, "Horror, Comedy", 119, 7.2, 4};
     daftarFilm[4] = {"Pabrik Gula", 50, "Horror", 105, 9, 5};
     daftarFilm[5] = {"Dilan 1990", 60, "Romance", 110, 7, 6};
     daftarFilm[6] = {"Project Hail Mary", 70, "Sci-Fi", 157, 8.6, 7};
     daftarFilm[7] = {"Kuncen", 80, "Horror", 108, 10, 8};
-    daftarFilm[8] = {"Minions", 90, "Komedi", 91, 9.2, 9};
+    daftarFilm[8] = {"Minions", 90, "Comedy", 91, 9.2, 9};
     daftarFilm[9] = {"Aquaman", 100, "Action", 143, 9.8, 10};
 
     jumlahFilm = 10;
