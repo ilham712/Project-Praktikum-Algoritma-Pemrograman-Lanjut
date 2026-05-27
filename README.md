@@ -82,7 +82,7 @@ Project ini menerapkan berbagai konsep penting dalam bahasa C++:
 | Dilan 1990        | Romance        | 7.0    |
 | Project Hail Mary | Sci-Fi         | 8.6    |
 | Kuncen            | Horror         | 10.0   |
-| Minions           | Komedi         | 9.2    |
+| Minions           | Comedy         | 9.2    |
 | Aquaman           | Action         | 9.8    |
 
 ---
