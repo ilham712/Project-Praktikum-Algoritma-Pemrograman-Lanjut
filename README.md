@@ -146,7 +146,9 @@ g++ main.cpp -o bioskop
 # 👨‍💻 Author
 
 **Ilham Cahyo Saputro (123250097)**
+
 **Sekar Putri Santyaningrum (123250110)**
+
 **Kelas Praktikum: IF-E**
 
 Project dibuat untuk memenuhi project praktikum algoritma pemrograman lanjut.
